@@ -7,12 +7,13 @@ output reg [31:0] o_pc;
 always @(posedge i_clk, negedge i_nrst) begin
     if (~i_nrst)
         o_pc <= 32'd0;
-    else
+    else begin
         if (~i_en)
             o_pc <= {i_pc[31:2], 2'b00};
+    end
 end
 
-//always @(posedge i_clk)
-//    $display("$pc:\t%h %h [%h]", (o_pc - 4), (o_pc >> 2) - 1, (o_pc >> 2) + 1);
+always @(posedge i_clk)
+    $display("$pc:\t%h -> %h", o_pc, (o_pc - 4));
 
 endmodule

@@ -12,12 +12,11 @@ reg [DATA_WIDTH-1:0] data;
 
 assign o_data = data;
 
-always @(posedge i_clk)
-    if (~i_en)
+always @(posedge i_clk or negedge i_nrst) begin
+    if (~i_nrst)
+	     data <= 0;
+	 else if (~i_en)
         data <= i_data;
-
-always @(negedge i_nrst) begin : __N_RESET
-    data = 0;
 end
 
 /*always @(posedge i_clk) begin : __DEBUG_MS_REG
