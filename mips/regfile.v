@@ -16,20 +16,24 @@ output reg [31:0] o_rdata1, o_rdata2;
 
 reg [31:0] gp_regs [31:0];
 
+initial $readmemh("_regfile_init.dat", gp_regs);
+
 always @* begin
     o_rdata1 <= gp_regs[i_raddr1];
     o_rdata2 <= gp_regs[i_raddr2];
-    end
-
-always @(posedge i_clk) begin
-    if (i_we & (i_waddr != 5'd0))
-        gp_regs[i_waddr] <= i_wdata;
 end
 
-always @(negedge i_nrst) begin : __N_RESET
-    integer i;
-    for(i = 0; i < 32; i = i + 1)
-        gp_regs[i] = 32'd0;
+always @(posedge i_clk) begin
+    if (~i_nrst) begin : __N_RESET
+        integer i;
+        for(i = 0; i < 32; i = i + 1)
+            gp_regs[i] = 32'd0;
+    end
+    else if (i_we & (i_waddr != 5'd0)) begin : __WRITE_REGFILE
+        integer i;
+        gp_regs[i_waddr] <= i_wdata;
+        $display("\n\t\tREGFILE:\twrote %h to reg %d", i_wdata, i_waddr);
+	end        
 end
 
 always @(posedge i_clk) begin : __DEBUG_REGFILE
@@ -37,7 +41,7 @@ always @(posedge i_clk) begin : __DEBUG_REGFILE
     
     $display("\n\t\tREGISTERS");
     for (i = 0; i < 32; i = i + 2)
-        $display("$[%d] 0x%h,\t$[%d]\t%h", i, gp_regs[i], i + 1, gp_regs[i + 1]);
+        $display("$[%d] %h,\t$[%d]\t%h", i, gp_regs[i], i + 1, gp_regs[i + 1]);
     
     /*// zero & at
     $display("$zero\t%h,\t$at\t%h", gp_regs[0], gp_regs[1]);

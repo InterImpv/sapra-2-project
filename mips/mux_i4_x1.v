@@ -1,4 +1,4 @@
-module mux_i4_x1(i_data0, i_data1, i_data2, ,i_data3, i_control, o_data);
+module mux_i4_x1(i_data0, i_data1, i_data2, i_data3, i_control, o_data);
 
 parameter DATA_WIDTH = 32;
 

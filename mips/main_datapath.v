@@ -123,7 +123,7 @@ NPC_reg(
     .o_data(NPC_reg_out)
 );
 
-rom #( .ADDR_WIDTH(5), .DATA_WIDTH(32) )
+rom #( .ADDR_WIDTH(5), .CELLS(32), .DATA_WIDTH(32) )
 main_rom(	
     .i_addr(curr_pc_addr[6:2]),
     .o_data(rom_out)
@@ -318,7 +318,7 @@ MEM_reg (
     .o_data(regMM_out)
 );
 
-ram #( .DATA_WIDTH(32), .ADDR_WIDTH(4) )
+ram #( .DATA_WIDTH(32), .ADDR_WIDTH(4), .CELLS(16) )
 main_ram(	
     .i_clk(i_clk),
     .i_addr(regR_out[3:0]),

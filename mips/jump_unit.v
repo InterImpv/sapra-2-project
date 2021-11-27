@@ -22,12 +22,12 @@ assign o_kill2 = branch;
 assign o_pc_src = ({branch, jump});
 
 /*always @*
-    $display("->pc_src: %b", o_pc_src);*/
+    $display("->pc_src: %b", o_pc_src);
     
 always @(posedge o_kill1)
     $display("\t^kill 1: %b", o_kill1);
     
 always @(posedge o_kill2)
-    $display("\t^kill 2: %b", o_kill2);
+    $display("\t^kill 2: %b", o_kill2);*/
 
 endmodule

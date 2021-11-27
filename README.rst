@@ -1,7 +1,15 @@
-work in progress
+WORK IN PROGRESS
 ================
-trial changes have been made.
-read me not
+:Name:
+		???
+:Authors:
+		Andrii Bobronnikov,
+		Oleksiy Demydenko,
+		Ruslan Sopira
+:version:
+		2.0
+		
+DESCRIPTION
+===========
 
-LIST OF HEROES and its tasks:
-- Andrii Bobronnikov > ...
+A MIPS core designed to play videos transmitted through UART on a LED matrix.

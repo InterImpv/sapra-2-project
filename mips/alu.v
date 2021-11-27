@@ -1,10 +1,15 @@
 module alu(i_opA, i_opB, i_control, i_shift, o_result, o_zf);
 
 localparam
-AND =  4'b0000, OR =  4'b0001,
-ADD =  4'b0010, SUB = 4'b0110,
-SOLT = 4'b0111, NOR = 4'b1100,
-SLL  = 4'b1000, SRL = 4'b1111;
+CTRL_ADD  = 4'd0,
+CTRL_SUB  = 4'd1,
+CTRL_AND  = 4'd2,
+CTRL_OR   = 4'd3,
+CTRL_NOR  = 4'd4,
+CTRL_XOR  = 4'd5,
+CTRL_SLL  = 4'd6,
+CTRL_SRL  = 4'd7,
+CTRL_SLTU = 4'd8;
   
 input      [31:0] i_opA, i_opB;
 input      [3:0]  i_control;
@@ -14,24 +19,37 @@ output            o_zf;
 
 assign o_zf = (o_result == 32'd0);
 
+reg [3:0] control;
+
 always @* begin
-    case (i_control)
-        AND: o_result <= i_opA & i_opB;
-        OR:  o_result <= i_opA | i_opB;
-        NOR: o_result <= ~(i_opA | i_opB);
+    control <= i_control;
+
+    case (control)
+        CTRL_AND: o_result <= i_opA & i_opB;
+        CTRL_OR:  o_result <= i_opA | i_opB;
+        CTRL_NOR: o_result <= ~(i_opA | i_opB);
+        CTRL_XOR: o_result <= i_opA ^ i_opB;
         
-        ADD: o_result <= i_opA + i_opB;
-        SUB: o_result <= i_opA - i_opB;
+        CTRL_ADD: o_result <= i_opA + i_opB;
+        CTRL_SUB: o_result <= i_opA - i_opB;
         
-        SOLT: begin
-            if (i_opA < i_opB)
-                o_result <= 32'd1;
-            else
-                o_result <= 32'd0;
-        end
-        SLL: o_result = i_opB << i_shift;
-        SRL: o_result = i_opB >> i_shift;
+        CTRL_SLTU: o_result <= (i_opA < i_opB) ? 32'd1 : 32'd0;
+        
+        CTRL_SLL: o_result = i_opB << i_shift;
+        CTRL_SRL: o_result = i_opB >> i_shift;
+		  
+        default: o_result <= i_opA + i_opB;
         
     endcase
 end
+
+/*
+always @* begin : __ALU_RES_DEBUG
+    $display("\tALU CTRL:\t%b", i_control);
+    $display("\tALU A:\t%h", i_opA);
+    $display("\tALU B:\t%h", i_opB);
+    $display("\tALU RES:\t%h", i_opB);
+end*/
+
 endmodule
+
