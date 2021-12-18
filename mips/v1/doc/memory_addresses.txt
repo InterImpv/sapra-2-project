@@ -1,0 +1,2 @@
+0000_0000 x 0003_FFFF - SRAM            @(addr[17:0])
+0004_0000 x 0004_00FF - video buffer    @(addr[18], addr[7:0])

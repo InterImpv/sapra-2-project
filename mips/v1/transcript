@@ -1,0 +1,156 @@
+# Loading project sapra_mips_v1
+# reading /home/krypton/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini
+# Loading project mips_basic_timer
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.testbench -t ns
+# vsim work.testbench -t ns 
+# Start time: 21:23:09 on Dec 01,2021
+# Loading work.testbench
+# Loading work.base_timer
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (32) for port 'i_data'. The port definition is at: /home/krypton/linux/Tools/quartus13/projects/timer_imp/basic_timer.v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /testbench/timer File: /home/krypton/linux/Tools/quartus13/projects/timer_imp/testbench.v Line: 16
+# ** Warning: (vsim-3015) [PCDPC] - Port size (16) does not match connection size (32) for port 'o_data'. The port definition is at: /home/krypton/linux/Tools/quartus13/projects/timer_imp/basic_timer.v(1).
+#    Time: 0 ns  Iteration: 0  Instance: /testbench/timer File: /home/krypton/linux/Tools/quartus13/projects/timer_imp/testbench.v Line: 16
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -t ns work.testbench
+# End time: 21:23:42 on Dec 01,2021, Elapsed time: 0:00:33
+# Errors: 0, Warnings: 11
+# vsim -t ns work.testbench 
+# Start time: 21:23:42 on Dec 01,2021
+# Loading work.testbench
+# Loading work.base_timer
+add wave  \
+sim:/testbench/clk \
+sim:/testbench/nrst \
+sim:/testbench/srst \
+sim:/testbench/enable \
+sim:/testbench/write \
+sim:/testbench/period \
+sim:/testbench/count \
+sim:/testbench/trigger
+run 20
+run 20
+run 20
+run 20
+run 20
+run 20
+run 20
+run 20
+run 20
+run 20
+run 40
+restart -f
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.base_timer
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+
+# Compile of basic_timer.v was successful.
+# Compile of testbench.v was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.testbench
+# Loading work.base_timer
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+run 40
+# End time: 21:31:12 on Dec 01,2021, Elapsed time: 0:07:30
+# Errors: 0, Warnings: 1

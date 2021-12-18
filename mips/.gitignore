@@ -1,0 +1,34 @@
+# quartus
+*.qar
+*.qarlog
+*.qip
+*.stp
+
+*.vhd
+*.bak
+
+*.cmp
+
+# modelsim
+*.wlf
+*.do
+*.mti
+*.mpf
+
+# project work folders
+v1/work
+v1/simulation
+v1/output_files
+v1/incremental_db
+v1/greybox_tmp
+v1/db
+
+# misc
+*.png
+*.bmp
+*.out.sdc
+
+# specific
+onehot_div_tb.bdf
+simple_pwm_testbench.bdf
+simple_pwm (copy).bsf
